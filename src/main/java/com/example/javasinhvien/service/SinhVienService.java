@@ -15,4 +15,6 @@ public interface SinhVienService {
 	SinhVien updateSinhVien(String masv, SinhVien sinhVien);
 
 	void deleteSinhVien(String masv);
+
+	List<SinhVien> findByMasvAndTensv(String masv, String tensv);
 }

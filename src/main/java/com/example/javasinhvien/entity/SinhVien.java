@@ -1,50 +1,89 @@
 package com.example.javasinhvien.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "sinhvien")
 public class SinhVien {
-    @Id
-    @Column(length = 10)
-    private String masv;
 
-    @Column(nullable = false, length = 100)
-    private String hoten;
+	@Id
+	@Column(length = 10)
+	private String masv;
 
-    private java.sql.Date ngaysinh;
+	@Column(nullable = false, length = 100)
+	private String hoten;
 
-    @Column(length = 10)
-    private String gioitinh;
+	private java.sql.Date ngaysinh;
 
-    @Column(length = 100, unique = true)
-    private String email;
+	@Column(length = 10)
+	private String gioitinh;
 
-    @Column(length = 15)
-    private String sdt;
+	@Column(length = 100, unique = true)
+	private String email;
 
-    @Column(length = 10)
-    private String malop;
+	@Column(length = 15)
+	private String sdt;
 
-    // getters và setters
-    public String getMasv() { return masv; }
-    public void setMasv(String masv) { this.masv = masv; }
+	@Column(length = 10)
+	private String malop;
 
-    public String getHoten() { return hoten; }
-    public void setHoten(String hoten) { this.hoten = hoten; }
+	// getters và setters
+	public String getMasv() {
+		return masv;
+	}
 
-    public java.sql.Date getNgaysinh() { return ngaysinh; }
-    public void setNgaysinh(java.sql.Date ngaysinh) { this.ngaysinh = ngaysinh; }
+	public void setMasv(String masv) {
+		this.masv = masv;
+	}
 
-    public String getGioitinh() { return gioitinh; }
-    public void setGioitinh(String gioitinh) { this.gioitinh = gioitinh; }
+	public String getHoten() {
+		return hoten;
+	}
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+	public void setHoten(String hoten) {
+		this.hoten = hoten;
+	}
 
-    public String getSdt() { return sdt; }
-    public void setSdt(String sdt) { this.sdt = sdt; }
+	public java.sql.Date getNgaysinh() {
+		return ngaysinh;
+	}
 
-    public String getMalop() { return malop; }
-    public void setMalop(String malop) { this.malop = malop; }
+	public void setNgaysinh(java.sql.Date ngaysinh) {
+		this.ngaysinh = ngaysinh;
+	}
+
+	public String getGioitinh() {
+		return gioitinh;
+	}
+
+	public void setGioitinh(String gioitinh) {
+		this.gioitinh = gioitinh;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSdt() {
+		return sdt;
+	}
+
+	public void setSdt(String sdt) {
+		this.sdt = sdt;
+	}
+
+	public String getMalop() {
+		return malop;
+	}
+
+	public void setMalop(String malop) {
+		this.malop = malop;
+	}
 }

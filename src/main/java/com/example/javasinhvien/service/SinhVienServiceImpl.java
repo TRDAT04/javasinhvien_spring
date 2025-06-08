@@ -50,4 +50,9 @@ public class SinhVienServiceImpl implements SinhVienService {
 	public void deleteSinhVien(String masv) {
 		sinhVienRepository.deleteById(masv);
 	}
+
+	@Override
+	public List<SinhVien> findByMasvAndTensv(String masv, String tensv) {
+		return sinhVienRepository.findByMasvContainingAndHotenContaining(masv, tensv);
+	}
 }
