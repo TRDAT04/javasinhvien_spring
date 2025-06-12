@@ -1,6 +1,7 @@
 package com.example.javasinhvien.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ public interface LopService {
 
 	List<Lop> getAll();
 
-	Lop getById(String malop);
+	Optional<Lop> getById(String malop);
 
 	Lop create(Lop lop);
 
@@ -19,8 +20,6 @@ public interface LopService {
 
 	void delete(String malop);
 
-	List<Lop> searchByTenlop(String tenlop);
-
-	List<Lop> searchByKhoa(String khoa);
+	List<Lop> searchByMalopAndTenlop(String malop, String tenlop);
 
 }

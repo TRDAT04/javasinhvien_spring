@@ -35,10 +35,16 @@ public class SinhVienController {
 	}
 
 	@GetMapping("/search")
-	public List<SinhVien> searchSinhVien(@RequestParam(required = false, defaultValue = "") String masv,
-			@RequestParam(required = false, defaultValue = "") String tensv) {
+	public List<SinhVien> searchSinhVien(@RequestParam(defaultValue = "") String masv,
+			@RequestParam(defaultValue = "") String tensv) {
 
 		return sinhVienService.findByMasvAndTensv(masv, tensv);
+	}
+
+	@GetMapping("/check-exists")
+	public ResponseEntity<Boolean> checkExists(@RequestParam String masv) {
+		boolean exists = sinhVienService.getSinhVienById(masv).isPresent();
+		return ResponseEntity.ok(exists);
 	}
 
 	@PostMapping

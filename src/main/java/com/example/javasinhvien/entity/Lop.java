@@ -11,10 +11,7 @@ public class Lop {
 	@Id
 	@Column(length = 10)
 	private String malop;
-
-	@Column(length = 100, nullable = false)
 	private String tenlop;
-
 	private String khoa;
 
 	// getters và setters

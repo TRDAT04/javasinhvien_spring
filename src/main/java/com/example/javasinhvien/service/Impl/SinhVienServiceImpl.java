@@ -1,4 +1,4 @@
-package com.example.javasinhvien.service;
+package com.example.javasinhvien.service.Impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.javasinhvien.entity.SinhVien;
 import com.example.javasinhvien.repository.SinhVienRepository;
+import com.example.javasinhvien.service.SinhVienService;
 
 @Service
 public class SinhVienServiceImpl implements SinhVienService {

@@ -3,6 +3,7 @@ package com.example.javasinhvien.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,8 +31,8 @@ public class LopController {
 	}
 
 	@GetMapping("/{malop}")
-	public Lop getById(@PathVariable String malop) {
-		return lopService.getById(malop);
+	public ResponseEntity<Lop> getById(@PathVariable String malop) {
+		return lopService.getById(malop).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 	}
 
 	@PostMapping
@@ -44,18 +45,22 @@ public class LopController {
 		return lopService.update(malop, lop);
 	}
 
+	@GetMapping("/check-exists/{malop}")
+	public ResponseEntity<Boolean> checkExists(@PathVariable String malop) {
+		boolean exists = lopService.getById(malop).isPresent();
+		return ResponseEntity.ok(exists);
+	}
+
 	@DeleteMapping("/{malop}")
 	public void delete(@PathVariable String malop) {
 		lopService.delete(malop);
 	}
 
-	@GetMapping("/search-by-tenlop")
-	public List<Lop> searchByTenlop(@RequestParam String tenlop) {
-		return lopService.searchByTenlop(tenlop);
+	@GetMapping("/search")
+	public List<Lop> searchByMalopAndTenlop(@RequestParam(defaultValue = "") String malop,
+			@RequestParam(defaultValue = "") String tenlop) {
+
+		return lopService.searchByMalopAndTenlop(malop, tenlop);
 	}
 
-	@GetMapping("/search-by-khoa")
-	public List<Lop> searchByKhoa(@RequestParam String khoa) {
-		return lopService.searchByKhoa(khoa);
-	}
 }

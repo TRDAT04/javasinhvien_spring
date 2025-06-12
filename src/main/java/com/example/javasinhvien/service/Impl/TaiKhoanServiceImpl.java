@@ -1,4 +1,4 @@
-package com.example.javasinhvien.service;
+package com.example.javasinhvien.service.Impl;
 
 import java.util.Optional;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.javasinhvien.entity.TaiKhoan;
 import com.example.javasinhvien.repository.TaiKhoanRepository;
+import com.example.javasinhvien.service.TaiKhoanService;
 
 @Service
 public class TaiKhoanServiceImpl implements TaiKhoanService {

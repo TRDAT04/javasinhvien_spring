@@ -9,7 +9,6 @@ import com.example.javasinhvien.entity.Lop;
 
 @Repository
 public interface LopRepository extends JpaRepository<Lop, String> {
-	List<Lop> findByTenlopContainingIgnoreCase(String tenlop);
+	List<Lop> findByMalopContainingAndTenlopContaining(String malop, String tenlop);
 
-	List<Lop> findByKhoaContainingIgnoreCase(String khoa);
 }

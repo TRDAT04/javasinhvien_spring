@@ -1,12 +1,14 @@
-package com.example.javasinhvien.service;
+package com.example.javasinhvien.service.Impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.javasinhvien.entity.Lop;
 import com.example.javasinhvien.repository.LopRepository;
+import com.example.javasinhvien.service.LopService;
 
 @Service
 public class LopServiceImpl implements LopService {
@@ -20,8 +22,8 @@ public class LopServiceImpl implements LopService {
 	}
 
 	@Override
-	public Lop getById(String malop) {
-		return lopRepository.findById(malop).orElse(null);
+	public Optional<Lop> getById(String malop) {
+		return lopRepository.findById(malop);
 	}
 
 	@Override
@@ -43,12 +45,8 @@ public class LopServiceImpl implements LopService {
 	}
 
 	@Override
-	public List<Lop> searchByTenlop(String tenlop) {
-		return lopRepository.findByTenlopContainingIgnoreCase(tenlop);
+	public List<Lop> searchByMalopAndTenlop(String malop, String tenlop) {
+		return lopRepository.findByMalopContainingAndTenlopContaining(malop, tenlop);
 	}
 
-	@Override
-	public List<Lop> searchByKhoa(String khoa) {
-		return lopRepository.findByKhoaContainingIgnoreCase(khoa);
-	}
 }
