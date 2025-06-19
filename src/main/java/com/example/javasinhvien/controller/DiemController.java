@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.javasinhvien.dto.DiemRequestDTO;
+import com.example.javasinhvien.dto.DiemResponseDTO;
+import com.example.javasinhvien.dto.SinhVienDTO;
 import com.example.javasinhvien.entity.Diem;
 import com.example.javasinhvien.entity.DiemId;
 import com.example.javasinhvien.service.DiemService;
@@ -38,8 +42,10 @@ public class DiemController {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody Diem diem) {
+	public ResponseEntity<?> create(@RequestBody DiemRequestDTO dto) {
 		try {
+			DiemId id = new DiemId(dto.getMasv(), dto.getMamon(), dto.getMahk());
+			Diem diem = new Diem(id, dto.getDiem());
 			return ResponseEntity.ok(service.create(diem));
 		} catch (RuntimeException e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -47,8 +53,10 @@ public class DiemController {
 	}
 
 	@PutMapping
-	public ResponseEntity<?> update(@RequestBody Diem diem) {
+	public ResponseEntity<?> update(@RequestBody DiemRequestDTO dto) {
 		try {
+			DiemId id = new DiemId(dto.getMasv(), dto.getMamon(), dto.getMahk());
+			Diem diem = new Diem(id, dto.getDiem());
 			return ResponseEntity.ok(service.update(diem));
 		} catch (RuntimeException e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -60,6 +68,18 @@ public class DiemController {
 		DiemId id = new DiemId(masv, mamon, mahk);
 		service.delete(id);
 		return ResponseEntity.ok("Đã xoá thành công.");
+	}
+
+	@GetMapping("/chuacodiem")
+	public ResponseEntity<?> getSinhVienChuaCoDiem(@RequestParam String mamon, @RequestParam String mahk) {
+		List<SinhVienDTO> list = service.getSinhVienChuaCoDiem(mamon, mahk);
+		return ResponseEntity.ok(list);
+	}
+
+	@GetMapping("/danhsach")
+	public ResponseEntity<?> getDanhSachDiem(@RequestParam String mamon, @RequestParam String mahk) {
+		List<DiemResponseDTO> list = service.getDanhSachDiem(mamon, mahk);
+		return ResponseEntity.ok(list);
 	}
 
 }

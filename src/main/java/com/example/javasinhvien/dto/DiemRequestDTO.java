@@ -1,30 +1,19 @@
-package com.example.javasinhvien.entity;
+package com.example.javasinhvien.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "dangky")
-@IdClass(DangKyMonId.class)
-public class DangKyMon {
-	@Id
+public class DiemRequestDTO {
 	private String masv;
-	@Id
 	private String mamon;
-	@Id
 	private String mahk;
+	private Double diem;
 
-	public DangKyMon(String masv, String mamon, String mahk) {
+	public DiemRequestDTO() {
+	}
 
+	public DiemRequestDTO(String masv, String mamon, String mahk, Double diem) {
 		this.masv = masv;
 		this.mamon = mamon;
 		this.mahk = mahk;
-	}
-
-	public DangKyMon() {
-
+		this.diem = diem;
 	}
 
 	public String getMasv() {
@@ -51,4 +40,11 @@ public class DangKyMon {
 		this.mahk = mahk;
 	}
 
+	public Double getDiem() {
+		return diem;
+	}
+
+	public void setDiem(Double diem) {
+		this.diem = diem;
+	}
 }
