@@ -14,6 +14,17 @@ public class Lop {
 	private String tenlop;
 	private String khoa;
 
+	public Lop() {
+
+	}
+
+	public Lop(String malop, String tenlop, String khoa) {
+		super();
+		this.malop = malop;
+		this.tenlop = tenlop;
+		this.khoa = khoa;
+	}
+
 	// getters và setters
 	public String getMalop() {
 		return malop;

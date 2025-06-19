@@ -49,4 +49,14 @@ public class MonHocServiceImpl implements MonHocService {
 		return MonhocRepository.findByMamonContainingAndTenmonContaining(mamon, tenmon);
 	}
 
+	@Override
+	public List<Mon> getMonChuaDangKy(String masv) {
+		return MonhocRepository.findMonChuaDangKyByMasv(masv);
+	}
+
+	@Override
+	public List<Mon> getMonHocDaDangKy(String masv, String mahk) {
+		return MonhocRepository.findMonHocDaDangKy(masv, mahk);
+	}
+
 }

@@ -63,4 +63,14 @@ public class MonController {
 		return monService.searchByMamonAndTenmon(mamon, tenmon);
 	}
 
+	@GetMapping("/chuadangky")
+	public List<Mon> getMonChuaDangKy(@RequestParam String masv) {
+		return monService.getMonChuaDangKy(masv);
+	}
+
+	@GetMapping("/dadangky")
+	public ResponseEntity<List<Mon>> getMonHocDaDangKy(@RequestParam String masv, @RequestParam String mahk) {
+		List<Mon> dsMon = monService.getMonHocDaDangKy(masv, mahk);
+		return ResponseEntity.ok(dsMon);
+	}
 }
