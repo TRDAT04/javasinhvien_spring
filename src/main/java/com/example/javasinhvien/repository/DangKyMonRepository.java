@@ -17,4 +17,8 @@ public interface DangKyMonRepository extends JpaRepository<DangKyMon, DangKyMonI
 			+ "   SELECT d FROM Diem d WHERE d.id.masv = dk.id.masv AND d.id.mamon = dk.id.mamon AND d.id.mahk = dk.id.mahk"
 			+ ")")
 	List<SinhVienDTO> findSinhVienChuaCoDiem(@Param("mamon") String mamon, @Param("mahk") String mahk);
+
+	List<DangKyMon> findByMasvAndMahk(String masv, String mahk);
+
+	List<DangKyMon> findByMasvAndMamon(String masv, String mamon);
 }

@@ -3,9 +3,6 @@ package com.example.javasinhvien.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.persistence.Embeddable;
-
-@Embeddable
 public class DangKyMonId implements Serializable {
 
 	private String masv;

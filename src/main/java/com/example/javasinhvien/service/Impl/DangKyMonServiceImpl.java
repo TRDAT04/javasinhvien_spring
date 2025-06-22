@@ -11,6 +11,7 @@ import com.example.javasinhvien.entity.Mon;
 import com.example.javasinhvien.repository.DangKyMonRepository;
 import com.example.javasinhvien.repository.MonHocRepository;
 import com.example.javasinhvien.service.DangKyMonService;
+import com.example.javasinhvien.service.HocPhiService;
 
 @Service
 public class DangKyMonServiceImpl implements DangKyMonService {
@@ -18,11 +19,21 @@ public class DangKyMonServiceImpl implements DangKyMonService {
 	private DangKyMonRepository repo;
 	@Autowired
 	private MonHocRepository monRepository;
+	@Autowired
+	private HocPhiService hocPhiService;
 
 	@Override
 
 	public List<DangKyMon> createMultiple(List<DangKyMon> ds) {
-		return repo.saveAll(ds);
+		List<DangKyMon> savedList = repo.saveAll(ds);
+
+		if (!savedList.isEmpty()) {
+			String masv = savedList.get(0).getMasv();
+			String mahk = savedList.get(0).getMahk();
+			hocPhiService.capNhatHocPhiSauDangKy(masv, mahk);
+		}
+
+		return savedList;
 	}
 
 	@Override
@@ -33,6 +44,7 @@ public class DangKyMonServiceImpl implements DangKyMonService {
 	@Override
 	public void delete(DangKyMonId id) {
 		repo.deleteById(id);
+		hocPhiService.capNhatHocPhiSauDangKy(id.getMasv(), id.getMahk());
 	}
 
 	public List<Mon> getMonHocFullByMasvAndMahk(String masv, String mahk) {
