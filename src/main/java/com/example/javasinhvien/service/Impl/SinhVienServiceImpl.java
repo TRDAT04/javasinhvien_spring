@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.javasinhvien.entity.SinhVien;
+import com.example.javasinhvien.entity.TaiKhoan;
 import com.example.javasinhvien.repository.SinhVienRepository;
+import com.example.javasinhvien.repository.TaiKhoanRepository;
 import com.example.javasinhvien.service.SinhVienService;
 
 @Service
@@ -15,6 +17,8 @@ public class SinhVienServiceImpl implements SinhVienService {
 
 	@Autowired
 	private SinhVienRepository sinhVienRepository;
+	@Autowired
+	private TaiKhoanRepository taiKhoanRepository;
 
 	@Override
 	public List<SinhVien> getAllSinhVien() {
@@ -28,7 +32,18 @@ public class SinhVienServiceImpl implements SinhVienService {
 
 	@Override
 	public SinhVien saveSinhVien(SinhVien sinhVien) {
-		return sinhVienRepository.save(sinhVien);
+		SinhVien saved = sinhVienRepository.save(sinhVien);
+
+		if (!taiKhoanRepository.existsById(saved.getMasv())) {
+			TaiKhoan tk = new TaiKhoan();
+			tk.setUsername(saved.getMasv());
+			tk.setPassword(saved.getMasv());
+			tk.setRole("sinhvien");
+			tk.setHoten(saved.getHoten());
+			taiKhoanRepository.save(tk);
+		}
+
+		return saved;
 	}
 
 	@Override

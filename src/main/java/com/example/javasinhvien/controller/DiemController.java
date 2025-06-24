@@ -82,4 +82,9 @@ public class DiemController {
 		return ResponseEntity.ok(list);
 	}
 
+	@GetMapping("/sinhvien")
+	public ResponseEntity<?> getDiemSinhVien(@RequestParam String masv, @RequestParam String mahk) {
+		return ResponseEntity.ok(service.getDiemSinhVien(masv, mahk));
+	}
+
 }

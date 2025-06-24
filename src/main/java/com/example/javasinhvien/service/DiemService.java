@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.javasinhvien.dto.DiemResponseDTO;
+import com.example.javasinhvien.dto.DiemSinhVienDTO;
 import com.example.javasinhvien.dto.SinhVienDTO;
 import com.example.javasinhvien.entity.Diem;
 import com.example.javasinhvien.entity.DiemId;
@@ -22,4 +23,7 @@ public interface DiemService {
 	List<SinhVienDTO> getSinhVienChuaCoDiem(String mamon, String mahk);
 
 	List<DiemResponseDTO> getDanhSachDiem(String mamon, String mahk);
+
+	List<DiemSinhVienDTO> getDiemSinhVien(String masv, String mahk);
+
 }

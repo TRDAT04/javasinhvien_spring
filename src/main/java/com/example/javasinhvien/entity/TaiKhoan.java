@@ -1,5 +1,6 @@
 package com.example.javasinhvien.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -10,10 +11,16 @@ public class TaiKhoan {
 
 	@Id
 	private String username;
+
 	private String password;
+
 	private String role;
 
+	@Column(name = "hoten")
+	private String hoten;
+
 	// Getters & Setters
+
 	public String getUsername() {
 		return username;
 	}
@@ -36,5 +43,13 @@ public class TaiKhoan {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getHoten() {
+		return hoten;
+	}
+
+	public void setHoten(String hoten) {
+		this.hoten = hoten;
 	}
 }

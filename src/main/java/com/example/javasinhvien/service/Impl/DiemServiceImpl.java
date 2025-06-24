@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.javasinhvien.dto.DiemResponseDTO;
+import com.example.javasinhvien.dto.DiemSinhVienDTO;
 import com.example.javasinhvien.dto.SinhVienDTO;
 import com.example.javasinhvien.entity.Diem;
 import com.example.javasinhvien.entity.DiemId;
@@ -58,6 +59,11 @@ public class DiemServiceImpl implements DiemService {
 
 	public List<DiemResponseDTO> getDanhSachDiem(String mamon, String mahk) {
 		return repository.getDanhSachDiem(mamon, mahk);
+	}
+
+	@Override
+	public List<DiemSinhVienDTO> getDiemSinhVien(String masv, String mahk) {
+		return repository.getDiemSinhVienTheoHocKy(masv, mahk);
 	}
 
 }

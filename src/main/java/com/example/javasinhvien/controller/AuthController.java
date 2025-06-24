@@ -33,6 +33,7 @@ public class AuthController {
 			Map<String, String> response = new HashMap<>();
 			response.put("username", tk.getUsername());
 			response.put("role", tk.getRole());
+			response.put("hoten", tk.getHoten());
 			return ResponseEntity.ok(response);
 		} else {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
