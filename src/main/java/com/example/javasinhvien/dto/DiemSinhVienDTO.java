@@ -4,12 +4,15 @@ public class DiemSinhVienDTO {
 	private String mamon;
 	private String tenmon;
 	private Double diem;
+	private int sotinchi;
 
-	public DiemSinhVienDTO(String mamon, String tenmon, Double diem) {
+	public DiemSinhVienDTO(String mamon, String tenmon, int sotinchi, Double diem) {
 		super();
 		this.mamon = mamon;
 		this.tenmon = tenmon;
+		this.sotinchi = sotinchi;
 		this.diem = diem;
+
 	}
 
 	public DiemSinhVienDTO() {
@@ -38,6 +41,14 @@ public class DiemSinhVienDTO {
 
 	public void setDiem(Double diem) {
 		this.diem = diem;
+	}
+
+	public int getSotinchi() {
+		return sotinchi;
+	}
+
+	public void setSotinchi(int sotinchi) {
+		this.sotinchi = sotinchi;
 	}
 
 }

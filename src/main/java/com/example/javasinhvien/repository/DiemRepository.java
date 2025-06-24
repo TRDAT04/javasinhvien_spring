@@ -23,7 +23,7 @@ public interface DiemRepository extends JpaRepository<Diem, DiemId> {
 
 	@Query("""
 				SELECT new com.example.javasinhvien.dto.DiemSinhVienDTO(
-					m.mamon, m.tenmon, d.diem)
+					m.mamon, m.tenmon,m.sotinchi, d.diem)
 				FROM Diem d
 				JOIN Mon m ON d.id.mamon = m.mamon
 				WHERE d.id.masv = :masv AND d.id.mahk = :mahk
