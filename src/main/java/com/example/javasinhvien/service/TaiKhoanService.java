@@ -3,6 +3,7 @@ package com.example.javasinhvien.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.javasinhvien.dto.DoiMatKhauRequestDTO;
 import com.example.javasinhvien.entity.TaiKhoan;
 
 public interface TaiKhoanService {
@@ -17,4 +18,6 @@ public interface TaiKhoanService {
 	TaiKhoan update(String username, TaiKhoan taiKhoan);
 
 	void delete(String username);
+
+	String doiMatKhau(DoiMatKhauRequestDTO request);
 }

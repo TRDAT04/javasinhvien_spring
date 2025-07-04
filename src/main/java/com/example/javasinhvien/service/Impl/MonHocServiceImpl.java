@@ -28,6 +28,9 @@ public class MonHocServiceImpl implements MonHocService {
 
 	@Override
 	public Mon create(Mon Monhoc) {
+		if (MonhocRepository.existsById(Monhoc.getMamon())) {
+			throw new RuntimeException("Mã môn học đã tồn tại!");
+		}
 		return MonhocRepository.save(Monhoc);
 	}
 

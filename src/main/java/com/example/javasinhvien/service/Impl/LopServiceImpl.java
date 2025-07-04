@@ -28,6 +28,9 @@ public class LopServiceImpl implements LopService {
 
 	@Override
 	public Lop create(Lop lop) {
+		if (lopRepository.existsById(lop.getMalop())) {
+			throw new RuntimeException("Mã lớp đã tồn tại!");
+		}
 		return lopRepository.save(lop);
 	}
 

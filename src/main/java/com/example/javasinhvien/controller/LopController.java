@@ -45,12 +45,6 @@ public class LopController {
 		return lopService.update(malop, lop);
 	}
 
-	@GetMapping("/check-exists/{malop}")
-	public ResponseEntity<Boolean> checkExists(@PathVariable String malop) {
-		boolean exists = lopService.getById(malop).isPresent();
-		return ResponseEntity.ok(exists);
-	}
-
 	@DeleteMapping("/{malop}")
 	public void delete(@PathVariable String malop) {
 		lopService.delete(malop);
@@ -59,7 +53,6 @@ public class LopController {
 	@GetMapping("/search")
 	public List<Lop> searchByMalopAndTenlop(@RequestParam(defaultValue = "") String malop,
 			@RequestParam(defaultValue = "") String tenlop) {
-
 		return lopService.searchByMalopAndTenlop(malop, tenlop);
 	}
 

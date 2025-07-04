@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.javasinhvien.dto.DoiMatKhauRequestDTO;
 import com.example.javasinhvien.entity.TaiKhoan;
 import com.example.javasinhvien.repository.TaiKhoanRepository;
 import com.example.javasinhvien.service.TaiKhoanService;
@@ -33,6 +34,9 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 
 	@Override
 	public TaiKhoan save(TaiKhoan taiKhoan) {
+		if (taiKhoanRepository.existsById(taiKhoan.getUsername())) {
+			throw new RuntimeException("username đã tồn tại!");
+		}
 		return taiKhoanRepository.save(taiKhoan);
 	}
 
@@ -49,5 +53,24 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 	@Override
 	public void delete(String username) {
 		taiKhoanRepository.deleteById(username);
+	}
+
+	@Override
+	public String doiMatKhau(DoiMatKhauRequestDTO request) {
+		Optional<TaiKhoan> optional = taiKhoanRepository.findById(request.getUsername());
+
+		if (optional.isPresent()) {
+			TaiKhoan tk = optional.get();
+
+			if (!tk.getPassword().equals(request.getOldPassword())) {
+				throw new RuntimeException("Mật khẩu cũ không đúng!");
+			}
+
+			tk.setPassword(request.getNewPassword());
+			taiKhoanRepository.save(tk);
+			return "Đổi mật khẩu thành công!";
+		} else {
+			return "Không tìm thấy tài khoản!";
+		}
 	}
 }

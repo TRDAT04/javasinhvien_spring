@@ -32,6 +32,9 @@ public class SinhVienServiceImpl implements SinhVienService {
 
 	@Override
 	public SinhVien saveSinhVien(SinhVien sinhVien) {
+		if (sinhVienRepository.existsById(sinhVien.getMasv())) {
+			throw new RuntimeException("Mã sinh viên đã tồn tại!");
+		}
 		SinhVien saved = sinhVienRepository.save(sinhVien);
 
 		if (!taiKhoanRepository.existsById(saved.getMasv())) {

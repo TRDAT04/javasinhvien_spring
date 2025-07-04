@@ -30,4 +30,5 @@ public interface DiemRepository extends JpaRepository<Diem, DiemId> {
 			""")
 	List<DiemSinhVienDTO> getDiemSinhVienTheoHocKy(@Param("masv") String masv, @Param("mahk") String mahk);
 
+	List<Diem> findById_Mamon(String mamon);
 }

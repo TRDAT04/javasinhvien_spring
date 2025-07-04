@@ -28,6 +28,9 @@ public class HocKyServiceImpl implements HocKyService {
 
 	@Override
 	public HocKy create(HocKy hk) {
+		if (hocKyRepository.existsById(hk.getMahk())) {
+			throw new RuntimeException("Mã học kỳ đã tồn tại!");
+		}
 		return hocKyRepository.save(hk);
 	}
 

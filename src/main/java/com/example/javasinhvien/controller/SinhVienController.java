@@ -41,12 +41,6 @@ public class SinhVienController {
 		return sinhVienService.findByMasvAndTensv(masv, tensv);
 	}
 
-	@GetMapping("/check-exists")
-	public ResponseEntity<Boolean> checkExists(@RequestParam String masv) {
-		boolean exists = sinhVienService.getSinhVienById(masv).isPresent();
-		return ResponseEntity.ok(exists);
-	}
-
 	@PostMapping
 	public SinhVien createSinhVien(@RequestBody SinhVien sinhVien) {
 		return sinhVienService.saveSinhVien(sinhVien);
