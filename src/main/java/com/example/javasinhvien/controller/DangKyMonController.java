@@ -36,8 +36,12 @@ public class DangKyMonController {
 	@DeleteMapping
 	public ResponseEntity<?> delete(@RequestParam String masv, @RequestParam String mamon, @RequestParam String mahk) {
 		DangKyMonId id = new DangKyMonId(masv, mamon, mahk);
-		service.delete(id);
-		return ResponseEntity.ok("Xóa thành công");
+		try {
+			service.delete(id);
+			return ResponseEntity.ok("Xóa thành công");
+		} catch (IllegalStateException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
 	}
 
 	@GetMapping("/monhoc")

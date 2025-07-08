@@ -9,4 +9,6 @@ import com.example.javasinhvien.entity.SinhVien;
 public interface SinhVienRepository extends JpaRepository<SinhVien, String> {
 
 	List<SinhVien> findByMasvContainingAndHotenContaining(String masv, String hoten);
+
+	List<SinhVien> findByMalop(String malop);
 }

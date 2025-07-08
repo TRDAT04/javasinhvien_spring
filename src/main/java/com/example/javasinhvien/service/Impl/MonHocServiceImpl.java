@@ -53,13 +53,18 @@ public class MonHocServiceImpl implements MonHocService {
 	}
 
 	@Override
-	public List<Mon> getMonChuaDangKy(String masv) {
-		return MonhocRepository.findMonChuaDangKyByMasv(masv);
+	public List<Mon> getMonChuaDangKyTheoHocKy(String masv, String mahk) {
+		return MonhocRepository.findMonChuaDangKyTheoHocKy(masv, mahk);
 	}
 
 	@Override
 	public List<Mon> getMonHocDaDangKy(String masv, String mahk) {
 		return MonhocRepository.findMonHocDaDangKy(masv, mahk);
+	}
+
+	@Override
+	public List<Mon> getMonTheoHocKy(String mahk) {
+		return MonhocRepository.findByMahk(mahk);
 	}
 
 }

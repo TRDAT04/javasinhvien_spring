@@ -17,4 +17,6 @@ public interface SinhVienService {
 	void deleteSinhVien(String masv);
 
 	List<SinhVien> findByMasvAndTensv(String masv, String tensv);
+
+	List<SinhVien> findByMaLop(String malop);
 }

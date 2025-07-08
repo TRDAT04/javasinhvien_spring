@@ -13,11 +13,13 @@ public interface MonHocRepository extends JpaRepository<Mon, String> {
 
 	@Query("""
 			   SELECT m FROM Mon m
-			   WHERE m.mamon NOT IN (
-			     SELECT d.mamon FROM DangKyMon d WHERE d.masv = :masv
+			   WHERE m.mahk = :mahk
+			   AND m.mamon NOT IN (
+			     SELECT d.mamon FROM DangKyMon d
+			     WHERE d.masv = :masv AND d.mahk = :mahk
 			   )
 			""")
-	List<Mon> findMonChuaDangKyByMasv(@Param("masv") String masv);
+	List<Mon> findMonChuaDangKyTheoHocKy(@Param("masv") String masv, @Param("mahk") String mahk);
 
 	@Query("""
 			    SELECT m FROM Mon m
@@ -41,4 +43,7 @@ public interface MonHocRepository extends JpaRepository<Mon, String> {
 			    )
 			""")
 	List<Mon> findMonByMasvAndMahk(@Param("masv") String masv, @Param("mahk") String mahk);
+
+	List<Mon> findByMahk(String mahk);
+
 }

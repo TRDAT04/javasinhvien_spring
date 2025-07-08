@@ -19,14 +19,18 @@ public class Mon {
 	@Column(name = "gia_tinchi")
 	private Double giaTinchi;
 
+	private String mahk;
+
 	public Mon() {
 	}
 
-	public Mon(String mamon, String tenmon, Integer sotinchi, Double gia_tinchi) {
+	public Mon(String mamon, String tenmon, Integer sotinchi, Double giaTinchi, String mahk) {
+		super();
 		this.mamon = mamon;
 		this.tenmon = tenmon;
 		this.sotinchi = sotinchi;
-		this.giaTinchi = gia_tinchi;
+		this.giaTinchi = giaTinchi;
+		this.mahk = mahk;
 	}
 
 	public String getMamon() {
@@ -60,4 +64,13 @@ public class Mon {
 	public void setGiaTinchi(Double giaTinchi) {
 		this.giaTinchi = giaTinchi;
 	}
+
+	public String getMahk() {
+		return mahk;
+	}
+
+	public void setMahk(String mahk) {
+		this.mahk = mahk;
+	}
+
 }

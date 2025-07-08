@@ -45,12 +45,6 @@ public class MonController {
 		return monService.update(mamon, mon);
 	}
 
-	@GetMapping("/check-exists/{mamon}")
-	public ResponseEntity<Boolean> checkExists(@PathVariable String mamon) {
-		boolean exists = monService.getById(mamon).isPresent();
-		return ResponseEntity.ok(exists);
-	}
-
 	@DeleteMapping("/{mamon}")
 	public void delete(@PathVariable String mamon) {
 		monService.delete(mamon);
@@ -64,8 +58,8 @@ public class MonController {
 	}
 
 	@GetMapping("/chuadangky")
-	public List<Mon> getMonChuaDangKy(@RequestParam String masv) {
-		return monService.getMonChuaDangKy(masv);
+	public List<Mon> getMonChuaDangKy(@RequestParam String masv, @RequestParam String mahk) {
+		return monService.getMonChuaDangKyTheoHocKy(masv, mahk);
 	}
 
 	@GetMapping("/dadangky")
@@ -73,4 +67,10 @@ public class MonController {
 		List<Mon> dsMon = monService.getMonHocDaDangKy(masv, mahk);
 		return ResponseEntity.ok(dsMon);
 	}
+
+	@GetMapping("/theohocky/{mahk}")
+	public List<Mon> getMonTheoHocKy(@PathVariable String mahk) {
+		return monService.getMonTheoHocKy(mahk);
+	}
+
 }

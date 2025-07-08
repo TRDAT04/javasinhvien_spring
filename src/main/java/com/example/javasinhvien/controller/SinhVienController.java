@@ -60,4 +60,9 @@ public class SinhVienController {
 		sinhVienService.deleteSinhVien(masv);
 		return ResponseEntity.noContent().build();
 	}
+
+	@GetMapping("/lop/{malop}")
+	public List<SinhVien> getSinhVienByLop(@PathVariable String malop) {
+		return sinhVienService.findByMaLop(malop);
+	}
 }

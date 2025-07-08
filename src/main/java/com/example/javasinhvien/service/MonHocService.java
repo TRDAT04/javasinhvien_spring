@@ -18,7 +18,10 @@ public interface MonHocService {
 
 	List<Mon> searchByMamonAndTenmon(String mamon, String tenmon);
 
-	List<Mon> getMonChuaDangKy(String masv);
+	List<Mon> getMonChuaDangKyTheoHocKy(String masv, String mahk);
 
 	List<Mon> getMonHocDaDangKy(String masv, String mahk);
+
+	List<Mon> getMonTheoHocKy(String mahk);
+
 }
