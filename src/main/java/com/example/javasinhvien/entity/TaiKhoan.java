@@ -20,6 +20,17 @@ public class TaiKhoan {
 	private String hoten;
 
 	// Getters & Setters
+	public TaiKhoan() {
+
+	}
+
+	public TaiKhoan(String username, String password, String role, String hoten) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.role = role;
+		this.hoten = hoten;
+	}
 
 	public String getUsername() {
 		return username;

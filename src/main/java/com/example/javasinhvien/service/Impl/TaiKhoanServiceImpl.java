@@ -73,4 +73,9 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
 			return "Không tìm thấy tài khoản!";
 		}
 	}
+
+	@Override
+	public List<TaiKhoan> searchTaiKhoan(String username, String tensv) {
+		return taiKhoanRepository.findByUsernameContainingAndHotenContaining(username, tensv);
+	}
 }

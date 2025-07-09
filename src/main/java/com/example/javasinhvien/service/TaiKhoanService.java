@@ -20,4 +20,7 @@ public interface TaiKhoanService {
 	void delete(String username);
 
 	String doiMatKhau(DoiMatKhauRequestDTO request);
+
+	List<TaiKhoan> searchTaiKhoan(String username, String tensv);
+
 }
