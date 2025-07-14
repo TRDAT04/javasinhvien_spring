@@ -13,7 +13,7 @@ public class SinhVien {
 	@Column(length = 10)
 	private String masv;
 
-	@Column(nullable = false, length = 100)
+	@Column(length = 100)
 	private String hoten;
 
 	private java.sql.Date ngaysinh;

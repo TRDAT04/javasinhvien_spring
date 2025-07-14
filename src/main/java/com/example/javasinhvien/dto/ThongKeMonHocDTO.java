@@ -7,14 +7,13 @@ public class ThongKeMonHocDTO {
 	private int soDat;
 	private int soRot;
 	private double tyLeDat;
-	private double tyLeRot; // %
+	private double tyLeRot;
 
 	public ThongKeMonHocDTO(String maMon, String tenMon, int soSinhVien, int soDat, int soRot) {
 		this.maMon = maMon;
 		this.tenMon = tenMon;
 		this.soSinhVien = soSinhVien;
-		this.soDat = soDat;
-		this.soRot = soRot;
+
 		this.tyLeDat = soSinhVien == 0 ? 0.0 : ((double) soDat / soSinhVien) * 100;
 		this.tyLeRot = soSinhVien == 0 ? 0.0 : ((double) soRot / soSinhVien) * 100;
 

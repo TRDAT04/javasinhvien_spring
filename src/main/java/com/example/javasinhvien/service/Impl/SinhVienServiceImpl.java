@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.example.javasinhvien.entity.SinhVien;
@@ -67,8 +68,12 @@ public class SinhVienServiceImpl implements SinhVienService {
 
 	@Override
 	public void deleteSinhVien(String masv) {
-		sinhVienRepository.deleteById(masv);
-		taiKhoanRepository.deleteById(masv);
+		try {
+			sinhVienRepository.deleteById(masv);
+			taiKhoanRepository.deleteById(masv);
+		} catch (DataIntegrityViolationException e) {
+			throw new RuntimeException("Không thể xóa sinh viên này vì đang được tham chiếu ở bảng khác.");
+		}
 	}
 
 	@Override
